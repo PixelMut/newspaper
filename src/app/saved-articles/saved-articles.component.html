@@ -1,0 +1,51 @@
+
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+<div class="container" *ngIf="!isLoading">
+
+
+  <div class="row" >
+    <div class="col-sm">
+      <mat-card class="article-card" *ngFor="let article of articleList ">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{article.title}}</mat-card-title>
+          <mat-card-subtitle>{{article.author}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <img mat-card-image src="{{article.urlToImage}}" alt="Photo">
+        <mat-divider></mat-divider>
+        <mat-card-content>
+          <p>
+            {{article.content}}
+          </p>
+
+        </mat-card-content>
+        <mat-card-actions>
+          <!--<button mat-button>LIKE</button>-->
+          <!--<button mat-button>SHARE</button>-->
+          <button mat-button (click)="onRemoveArticle(article.url)">Remove</button>
+          <button mat-button (click)="onViewArticle(article)">View</button>
+        </mat-card-actions>
+      </mat-card>
+
+      <!--Cas ou il n'y a aucun article sauvé-->
+      <mat-card class="article-card" *ngIf="articleList.length===0 ">
+        <mat-card-content>
+          <p>
+            No Articles Found
+          </p>
+        </mat-card-content>
+        <!--<mat-card-actions>-->
+          <!--&lt;!&ndash;<button mat-button>LIKE</button>&ndash;&gt;-->
+          <!--&lt;!&ndash;<button mat-button>SHARE</button>&ndash;&gt;-->
+          <!--<button mat-button (click)="onRemoveArticle(article.url)">Remove</button>-->
+          <!--<button mat-button (click)="onViewArticle(article)">View</button>-->
+        <!--</mat-card-actions>-->
+      </mat-card>
+
+
+
+    </div>
+  </div>
+</div>

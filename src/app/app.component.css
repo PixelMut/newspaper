@@ -1,0 +1,16 @@
+.example-container{
+  padding-top:10px;
+  padding-left: 10px;
+  height: 100%;
+}
+
+.sidenav{
+  border: solid aquamarine 1px;
+  height: 500px;
+}
+
+.example-spacer {
+  flex: auto;
+}
+
+

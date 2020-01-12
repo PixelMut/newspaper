@@ -1,0 +1,60 @@
+
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+
+
+
+  <div class="container" *ngIf="!isLoading">
+
+      <mat-card class="article-card text-center">
+        <div class="row">
+          <div class="col-md">
+            <mat-form-field class="col-sm">
+              <mat-label>Country</mat-label>
+              <mat-select [(ngModel)]="selectedCountry" name="langue" (selectionChange)="changeLanguage()">
+                <mat-option *ngFor="let country of countries" [value]="country"  >
+                  {{country.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-sm">
+            <mat-form-field class="col-sm">
+              <mat-label>Category</mat-label>
+              <mat-select [(ngModel)]="selectedCategory" name="category" (selectionChange)="changeCategory()">
+                <mat-option *ngFor="let category of categories" [value]="category"  >
+                  {{category.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card>
+
+    <div class="row" >
+      <div class="col-md-4" *ngFor="let article of articleList ">
+        <mat-card class="article-card" >
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{article.title}}</mat-card-title>
+            <mat-card-subtitle>{{article.author}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-divider></mat-divider>
+          <img mat-card-image src="{{article.urlToImage}}" alt="Photo">
+          <mat-divider></mat-divider>
+          <mat-card-content>
+            <p>
+              {{article.content}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <!--<button mat-button>LIKE</button>-->
+            <!--<button mat-button>SHARE</button>-->
+            <button mat-button (click)="onSaveArticle(article)">Save</button>
+            <button mat-button (click)="onViewArticle(article)">View</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
